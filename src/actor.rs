@@ -1,7 +1,7 @@
 use crate::addr::ActorEvent;
 use crate::runtime::spawn;
 use crate::{Addr, Context};
-use anyhow::Result;
+use crate::Result;
 use futures::channel::mpsc::UnboundedReceiver;
 use futures::channel::oneshot;
 use futures::{FutureExt, StreamExt};

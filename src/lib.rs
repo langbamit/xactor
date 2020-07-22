@@ -71,11 +71,16 @@ mod runtime;
 mod service;
 mod supervisor;
 
-/// Alias of anyhow::Result
-pub type Result<T> = anyhow::Result<T>;
 
-/// Alias of anyhow::Error
-pub type Error = anyhow::Error;
+pub type Result<T> = std::result::Result<T, Error>;
+
+#[derive(thiserror::Error, Debug)]
+pub enum Error {
+    #[error(transparent)]
+    SendError(#[from] futures::channel::mpsc::SendError),
+    #[error(transparent)]
+    Canceled(#[from] futures::channel::oneshot::Canceled)
+}
 
 pub use actor::{Actor, Handler, Message, StreamHandler};
 pub use addr::Addr;

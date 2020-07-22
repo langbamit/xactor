@@ -1,6 +1,6 @@
 use crate::actor::start_actor;
 use crate::{Actor, Addr, Context};
-use anyhow::Result;
+use crate::Result;
 use fnv::FnvHasher;
 use futures::channel::oneshot;
 use futures::lock::Mutex;
